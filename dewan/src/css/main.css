@@ -1,0 +1,114 @@
+/* Reset body & html */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+   /* background-color: rgb(13, 107, 13);*/
+background: linear-gradient(
+  to right,
+  rgb(0, 59, 0),
+  rgb(4, 96, 4),
+  rgb(0, 59, 0)
+);
+
+
+}
+.all{
+    margin-right: 700px;
+   
+    margin-top: 50px;
+}
+
+
+
+/* Main container يغطي الشاشة كلها */
+.main {
+ 
+    color: white;              /* النصوص تكون بيضاء */
+    font-size: 100%;
+    min-height: 70vh;         /* يغطي كامل ارتفاع الشاشة */
+    width:300%;               /* يغطي كامل عرض الشاشة */
+    display: flex;
+    flex-direction: column;    /* ترتيب العناصر عمودي */
+    align-items: center;       /* توسيط العناصر أفقياً */
+    justify-content: center;   /* توسيط العناصر عمودياً */
+    margin-top: 0px;
+    
+}
+
+/* العنوان */
+.h1 {
+    font-size: 25px;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;  /* يحط النص في وسط العرض */
+}
+
+
+.alldiv{
+    display: flex;
+}
+
+/* الزر الأول */
+.button1 {
+  
+  
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    padding: 10px 20px;
+   
+  
+}
+
+.button0{
+    background-color: rgba(4, 228, 0, 0.525);
+    color: white;
+    
+}
+
+
+
+
+
+
+
+.button0:hover {
+    background-color: #0b7a0b;      /* لون أفتح شوي */
+    transform: scale(1.08);         /* تكبير خفيف */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* ظل ناعم */
+}
+
+/* الزر الثاني */
+.button2 {
+  
+    border: none;
+    border-radius: 15px;
+    color: white;
+    padding: 10px 20px;
+    
+}
+
+
+.button00:hover {
+    background-color: #829f82;      /* لون أفتح شوي */
+    transform: scale(1.08);         /* تكبير خفيف */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* ظل ناعم */
+}
+
+
+
+/*    هسا هون بدي ابلش احط الصور    */
+.images-container {
+    display: flex;
+    justify-content: flex-start; /* يحط المحتوى أقصى الشمال */
+    
+   
+  }
+  
+  
+  .img {
+    width: 300px;
+    
+  }

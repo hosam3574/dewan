@@ -1,0 +1,87 @@
+.cards {
+  display: flex;
+  gap: 20px; /* مسافة بين الكاردات */
+  margin-top: 50px;
+}
+
+/* ستايل عام للكاردات */
+.card {
+  width: 250px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  background-color: #f5f5f5; /* خلفية افتراضية لباقي الكاردات */
+  text-align: center;
+}
+
+/* كارد احصائياتي بلون مختلف */
+#nn {
+  background-color: #4CAF50; /* الخلفية للعنوان */
+  color: white;               /* لون النص */
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* ستايل الإحصائيات داخل الكارد */
+.stats-navbar {
+  display: flex;
+  flex-direction: column; /* البيانات تحت بعض */
+  margin-top: 15px;
+  background-color: #45a049; /* خلفية داخلية للكارد */
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+.stat span {
+  font-weight: 600;
+}
+.last-games-card {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+}
+
+.game-item {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 15px;
+  background-color: #e0e0e0;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.game-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.game-info {
+  flex: 1;
+}
+
+.winner-name {
+  font-weight: bold;
+  margin: 0 0 5px 0;
+}
+
+.player-scores {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.player-scores li {
+  font-size: 14px;
+  color: #333;
+}
