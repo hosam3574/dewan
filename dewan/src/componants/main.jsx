@@ -35,8 +35,8 @@ function Main() {
     src="../photo/WhatsApp_Image_2026-02-11_at_1.10.59_AM-removebg-preview.png"
     alt=""
   />
+  <img className='img2' src="../photo/WhatsApp_Image_2026-02-11_at_5.20.33_PM-removebg-preview.png" alt="" />
 
-  
 </div>
 
 

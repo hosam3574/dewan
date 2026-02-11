@@ -41,13 +41,14 @@ background: linear-gradient(
 .h1 {
     font-size: 25px;
     color: white;
-    margin-bottom: 20px;
+    margin-top: 205px;
     text-align: center;  /* يحط النص في وسط العرض */
 }
 
 
 .alldiv{
     display: flex;
+    margin-top: 20px;
 }
 
 /* الزر الأول */
@@ -101,14 +102,23 @@ background: linear-gradient(
 
 /*    هسا هون بدي ابلش احط الصور    */
 .images-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
     display: flex;
-    justify-content: flex-start; /* يحط المحتوى أقصى الشمال */
-    
-   
+    align-items: center;   /* تمركز عمودي مضبوط */
+    margin-top: -150px;
   }
+  
   
   
   .img {
-    width: 300px;
-    
+    width: 370px;
   }
+  
+.img2{
+    width: 400px;
+    margin-left: 740px;
+    margin-top: 50px;
+}
