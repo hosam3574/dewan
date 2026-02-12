@@ -1,124 +1,139 @@
-/* Reset body & html */
+/* Reset */
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
-   /* background-color: rgb(13, 107, 13);*/
-background: linear-gradient(
-  to right,
-  rgb(0, 59, 0),
-  rgb(4, 96, 4),
-  rgb(0, 59, 0)
-);
-
-
-}
-.all{
-    margin-right: 700px;
-   
-    margin-top: 50px;
-}
-
-
-
-/* Main container يغطي الشاشة كلها */
-.main {
- 
-    color: white;              /* النصوص تكون بيضاء */
-    font-size: 100%;
-    min-height: 70vh;         /* يغطي كامل ارتفاع الشاشة */
-    width:300%;               /* يغطي كامل عرض الشاشة */
+    background: linear-gradient(to right, rgb(0, 59, 0), rgb(4, 96, 4), rgb(0, 59, 0));
+  }
+  
+  /* الحاوية العامة */
+  .all {
     display: flex;
-    flex-direction: column;    /* ترتيب العناصر عمودي */
-    align-items: center;       /* توسيط العناصر أفقياً */
-    justify-content: center;   /* توسيط العناصر عمودياً */
-    margin-top: 0px;
-    
-}
-
-/* العنوان */
-.h1 {
-    font-size: 25px;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    position: relative;
+  }
+  
+  /* المحتوى */
+  .main {
     color: white;
-    margin-top: 205px;
-    text-align: center;  /* يحط النص في وسط العرض */
-}
-
-
-.alldiv{
+    min-height: 70vh;
+    width: 100%;              /* بدل 300% */
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* العنوان */
+  .h1 {
+    font-size: 28px;
+    margin-top: 0;
+    text-align: center;
+  }
+  
+  /* الأزرار */
+  .alldiv {
+    display: flex;
+    gap: 20px;
     margin-top: 20px;
-}
-
-/* الزر الأول */
-.button1 {
+  }
   
-  
+  .button0,
+  .button00 {
     border: none;
     border-radius: 15px;
-    color: aliceblue;
-    padding: 10px 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* زر لعبة جديدة */
+  .button0 {
+    background-color: rgba(4, 228, 0, 0.6);
+    color: white;
+  }
+  
+  .button0:hover {
+    background-color: #0b7a0b;
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  }
+  
+  /* زر إنشاء مجموعة */
+  .button00 {
+    background-color: #5c6f5c;
+    color: white;
+  }
+  
+  .button00:hover {
+    background-color: #829f82;
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  }
    
+
+
+
+
   
-}
-
-.button0{
-    background-color: rgba(4, 228, 0, 0.525);
-    color: white;
-    
-}
-
-
-
-
-
-
-
-.button0:hover {
-    background-color: #0b7a0b;      /* لون أفتح شوي */
-    transform: scale(1.08);         /* تكبير خفيف */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* ظل ناعم */
-}
-
-/* الزر الثاني */
-.button2 {
-  
-    border: none;
-    border-radius: 15px;
-    color: white;
-    padding: 10px 20px;
-    
-}
-
-
-.button00:hover {
-    background-color: #829f82;      /* لون أفتح شوي */
-    transform: scale(1.08);         /* تكبير خفيف */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* ظل ناعم */
-}
-
-
-
-/*    هسا هون بدي ابلش احط الصور    */
-.images-container {
+  /* الصور *//*
+  .images-container {
     position: absolute;
     left: 0;
-    top: 0;
     bottom: 0;
     display: flex;
-    align-items: center;   /* تمركز عمودي مضبوط */
-    margin-top: -150px;
+    align-items: flex-end;
+    gap: 20px;
+    padding: 20px;
   }
-  
-  
   
   .img {
-    width: 370px;
+    width: 320px;
   }
   
-.img2{
-    width: 400px;
-    margin-left: 740px;
-    margin-top: 50px;
-}
+  .img2 {
+    width: 340px;
+  } 
+  */
+
+
+
+
+
+
+  /* ============================= */
+  /* ريسبونسف لشاشات أصغر من 1400px */
+  @media (max-width: 1400px) {
+    .img { width: 250px; }
+    .img2 { width: 260px; }
+  }
+  
+  /* ============================= */
+  /* تابلت */
+  @media (max-width: 900px) {
+    .alldiv {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .images-container {
+      display: none; /* نخفي الصور */
+    }
+  }
+  
+  /* ============================= */
+  /* موبايل */
+  @media (max-width: 500px) {
+    .h1 { font-size: 20px; }
+  
+    .button0,
+    .button00 {
+      width: 100%;
+      font-size: 15px;
+    }
+  }
+  

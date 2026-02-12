@@ -1,75 +1,99 @@
-.navbar{
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #333;
-    padding: 10px;
+    padding: 10px 20px;
     position: fixed;
-    top: 0; 
+    top: 0;
     left: 0;
     width: 100%;
-     height: 130px;
-   
-
-}
-#photo1{
-    width: 100px;
-    height: 100px;
+    height: 80px;              /* خففنا الارتفاع ليكون أنظف */
+    z-index: 1000;
+  }
+  
+  /* الشعار */
+  #photo1 {
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    margin-left: 60px;
-}
-#pargraph {
-    font-size: 40px;
+  }
+  
+  /* النص الأوسط */
+  #pargraph {
+    font-size: 28px;
     font-weight: 600;
     font-family: Arial, Helvetica, sans-serif;
-    margin-right: 1100px;
-}
-
-#pargraph .red {
-    color: red;
-}
-#pargraph span {
-    margin-right: 10px; /* غير الرقم حسب ما تحب */
-}
-#pargraph span {
-    margin-right: 0.4em;
-}
-
-
-#pargraph .white {
     color: white;
-}
-
-
-#button1{
+    text-align: center;
+    flex: 1;                   /* يخليه بالنص بدون مارجنات خيالية */
+  }
+  
+  #pargraph .red { color: red; }
+  #pargraph .white { color: white; }
+  
+  /* زر الدخول */
+  #button1 {
     background-color: #4CAF50;
     color: white;
-    padding: 10px 20px;
+    padding: 8px 18px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    margin-right: 200px;
-}
-#button1:hover{
-    background-color: #000000;
-}
-.profile-container {
-    width: 45px;        /* حجم الخلفية */
-    height: 45px;
+    transition: 0.3s;
+    margin-right: 10px;
+  }
+  
+  #button1:hover {
+    background-color: #000;
+  }
+  
+  /* صورة البروفايل */
+  .profile-container {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background-color: #555;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 50px; /* مكانه بآخر navbar */
-}
-
-.profile-image {
-    width: 35px;        /* تصغير الصورة نفسها */
-    height: 35px;
+    margin-right: 120px;
+  }
+  
+  .profile-image {
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     object-fit: cover;
-    
-}
-
-
+  }
+  
+  /* ======================= */
+  /* ريسبونسف للتابلت */
+  @media (max-width: 900px) {
+    #pargraph {
+      font-size: 10px;
+    }
+  
+    #button1 {
+      padding: 6px 14px;
+      font-size: 14px;
+    }
+  }
+  
+  /* ======================= */
+  /* ريسبونسف للموبايل */
+  @media (max-width: 600px) {
+    .navbar {
+      height: 70px;
+      padding: 10px;
+    }
+  
+    #pargraph {
+      font-size: 16px;
+    }
+  
+    #button1 {
+      display: none; /* نخفي الزر إذا الشاشة صغيرة */
+    }
+  }
+  

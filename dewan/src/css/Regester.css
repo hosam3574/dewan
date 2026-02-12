@@ -1,6 +1,6 @@
 .cards {
   display: flex;
-  gap: 20px; /* مسافة بين الكاردات */
+  gap: 200px; /* مسافة بين الكاردات */
   margin-top: 50px;
 }
 

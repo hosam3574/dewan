@@ -1,12 +1,12 @@
 import React from 'react'
+import { useState } from 'react'
+
 
 function Main() {
+
   return (
 
     <div className='all'>
-
-
-
 
 
         <div  className='main'>
@@ -19,7 +19,7 @@ function Main() {
       <button className='button0' > <b>لعبة جديدة </b> </button></div>
      
      <div  className='button2'>
-        <button className='button00'>انشاء مجموعة </button>
+        <button className='button00'onClick={window.location.href="../componants/Group"} >انشاء مجموعة </button>
         </div> 
 
    </div>
@@ -27,7 +27,7 @@ function Main() {
 </div>
 
 
-
+{/* 
 <div >
 <div className="images-container">
   <img
@@ -40,7 +40,8 @@ function Main() {
 </div>
 
 
-</div>
+</div> */}
+
 
 
     </div>

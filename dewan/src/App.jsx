@@ -8,6 +8,8 @@ import Navebar from './componants/navebar'
 import Main from './componants/main'
 import Regester from './componants/Regester'
 import "./css/Regester.css"
+import Group from './componants/Group'
+
 
 function App() {
   
