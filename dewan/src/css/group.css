@@ -1,0 +1,60 @@
+/* خلفية كاملة للموقع */
+.group-page {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5rem; /* يرفع العنوان */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  gap: 3rem;
+  animation: fadeInPage 1s ease forwards;
+}
+
+/* العنوان */
+.title {
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+  animation: slideDown 0.7s ease forwards;
+}
+
+/* صندوق الأزرار */
+.buttons {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* الأزرار */
+.game-btn {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #d63447;
+  font-size: 1.5rem;
+  padding: 1rem 2.5rem;
+  border: 2px solid #d63447;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.game-btn:hover {
+  transform: scale(1.15) rotate(-2deg);
+  background-color: #d63447;
+  color: #fff;
+}
+
+/* أنيميشن fadeIn للصفحة */
+@keyframes fadeInPage {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* أنيميشن slideDown للعنوان */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}

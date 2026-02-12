@@ -1,49 +1,91 @@
-import React from 'react'
-import { useState } from 'react'
-
+import React, { useState } from 'react'
+import Group from './Group'
 
 function Main() {
 
   return (
-
     <div className='all'>
+      <div className='main'>
+        <h1 className='h1'>سجل نتائج الشّدة مع أصحابك</h1>
 
-
-        <div  className='main'>
-      <h1 className='h1'>سجل سّجل  نتائج الشّدة مع أصحابك     </h1>
-
-
-      <div className='alldiv'>
-
-<div className='button1'>
-      <button className='button0' > <b>لعبة جديدة </b> </button></div>
+        <div className='alldiv'>
+          <div className='button1'>
+            <button className='button0'>
+              <b>لعبة جديدة</b>
+            </button>
+          </div>
      
-     <div  className='button2'>
-        <button className='button00'onClick={window.location.href="../componants/Group"} >انشاء مجموعة </button>
-        </div> 
+          <div className='button2'>
+            <button 
+              className='button00'
+              onClick={() => window.location.href="/button"}
+            >
+              انشاء مجموعة
+            </button>
+          </div> 
+        </div>
+      </div>
 
-   </div>
+     
+      {/* //rigesrter */}
+
+      <div className="cards">
+        
+ 
+   
+  <div className="card">
+  <h3 id="nn">احصائياتي</h3>
+
+  <div className="stats-navbar">
+    <div className="stat">
+      <p>الانتصارات</p>
+      <span>12</span>
+    </div>
+    <div className="stat">
+      <p>الخسائر</p>
+      <span>5</span>
+    </div>
+    <div className="stat">
+      <p>أعلى نتيجة</p>
+      <span>320</span>
+    </div>
+    <div className="stat">
+      <p>مجموع الألعاب</p>
+      <span>17</span>
+    </div>
+  </div>
+</div>
+
+  
+
+  <div className="card last-games-card">
+  <h3>أخر الألعاب</h3>
+
+  <div className="game-item">
+    <img
+      src="https://via.placeholder.com/80"
+      alt="لعبة"
+      className="game-image"
+    />
+    
+    <div className="game-info">
+      <p className="winner-name">الفائز: أحمد</p>
+      <ul className="player-scores">
+        <li>محمد: 50</li>
+        <li>سارة: 40</li>
+        <li>علي: 30</li>
+      </ul>
+    </div>
+  </div>
 
 </div>
 
 
-{/* 
-<div >
-<div className="images-container">
-  <img
-    className="img"
-    src="../photo/WhatsApp_Image_2026-02-11_at_1.10.59_AM-removebg-preview.png"
-    alt=""
-  />
-  <img className='img2' src="../photo/WhatsApp_Image_2026-02-11_at_5.20.33_PM-removebg-preview.png" alt="" />
-
+  <div className="card">
+    <h3>أفضل اللعبين</h3>
+    <p>هذا محتوى الكارد الثالث</p>
+  </div>
 </div>
-
-
-</div> */}
-
-
-
     </div>
   )
 }

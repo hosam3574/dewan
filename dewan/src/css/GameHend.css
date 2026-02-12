@@ -1,0 +1,125 @@
+/* خلفية كاملة */
+.game-container {
+  
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-size: cover;
+  background-position: center;
+  padding: 3rem 1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* البطاقة */
+.game-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 900px;
+  animation: fadeInCard 0.8s ease forwards;
+}
+
+/* العنوان */
+.game-card h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #d63447;
+}
+
+/* فورم إضافة لاعب */
+.add-player-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.add-player-form input {
+  flex: 1;
+  padding: 0.7rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.btn {
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.add-btn {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.add-btn:hover {
+  background-color: #218838;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+.reset-btn {
+  margin-top: 1.5rem;
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.reset-btn:hover {
+  background-color: #e0a800;
+}
+
+/* الجدول */
+.notebook table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.notebook th, .notebook td {
+  padding: 0.8rem;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.score-badge {
+  display: inline-block;
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  margin: 0 2px;
+}
+
+/* الفائز */
+.winner {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #d63447;
+  text-align: center;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* أنيميشن */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInCard {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
