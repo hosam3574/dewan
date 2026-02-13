@@ -1,7 +1,7 @@
 .cards {
   display: flex;
   gap: 200px; /* مسافة بين الكاردات */
-  margin-top: -450px;
+  margin-top: -250px;
 }
 
 /* ستايل عام للكاردات */
