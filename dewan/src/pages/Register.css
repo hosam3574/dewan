@@ -1,14 +1,14 @@
-/* Register.css */
+
 .auth-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
+  
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 20px;
     box-sizing: border-box;
   }
   
-  /* باقي CSS مثل ما أعطيتك سابقًا */
+ 
   
