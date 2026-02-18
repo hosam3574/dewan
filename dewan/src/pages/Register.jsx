@@ -10,17 +10,21 @@ function Register({ setUser }) { // لازم نرسل setUser من App
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const { data } = await axios.post("http://localhost:4000/api/auth/register", { name, email, password });
-      setUser(data); // نعيّن المستخدم مباشرة بعد التسجيل
-      localStorage.setItem("token", data.token); // نخزن التوكن
-      navigate("/"); // يروح للصفحة الرئيسية
-    } catch (err) {
-      setMessage(err.response?.data?.message || "حدث خطأ");
-    }
-  };
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const { data } = await axios.post("http://localhost:4000/api/auth/register", { name, email, password });
+
+    const userData = { name: data.name, token: data.token };
+    localStorage.setItem("user", JSON.stringify(userData));
+    setUser(userData);
+
+    navigate("/");
+  } catch (err) {
+    setMessage(err.response?.data?.message || "حدث خطأ");
+  }
+};
+
 
   return (
     <div className="auth-container">

@@ -1,12 +1,22 @@
-import React, { useState } from 'react'
-import Group from './Group'
+import React, { useEffect, useState } from 'react';
+import Group from './Group';
 
-function Main() {
+function Main({ user }) {
+  const [lastGames, setLastGames] = useState([]);
+
+  useEffect(() => {
+    const savedGames = JSON.parse(localStorage.getItem("lastGames")) || [];
+    setLastGames(savedGames);
+  }, []);
 
   return (
     <div className='all'>
       <div className='main'>
-        <h1 className='h1'>سجل نتائج الشّدة مع أصحابك</h1>
+        <h1 className='h1 animate-slide-down'>
+          مرحبا {user?.name} ♠️
+        </h1>
+        
+        <h1>سجل نتائج مباريات الشدة مع صحابك</h1>
 
         <div className='alldiv'>
           <div className='button1'>
@@ -14,7 +24,7 @@ function Main() {
               <b>لعبة جديدة</b>
             </button>
           </div>
-     
+
           <div className='button2'>
             <button 
               className='button00'
@@ -26,68 +36,87 @@ function Main() {
         </div>
       </div>
 
-     
-      {/* //rigesrter */}
-
       <div className="cards">
-        
- 
-   
-  <div className="card">
-  <h3 id="nn">احصائياتي</h3>
+        {/* احصائيات */}
+        <div className="card">
+          <h3 id="nn">احصائياتي</h3>
+          <div className="stats-navbar">
+            <div className="stat">
+              <p>الانتصارات</p>
+              <span>12</span>
+            </div>
+            <div className="stat">
+              <p>الخسائر</p>
+              <span>5</span>
+            </div>
+            <div className="stat">
+              <p>أعلى نتيجة</p>
+              <span>320</span>
+            </div>
+            <div className="stat">
+              <p>مجموع الألعاب</p>
+              <span>17</span>
+            </div>
+          </div>
+        </div>
 
-  <div className="stats-navbar">
-    <div className="stat">
-      <p>الانتصارات</p>
-      <span>12</span>
-    </div>
-    <div className="stat">
-      <p>الخسائر</p>
-      <span>5</span>
-    </div>
-    <div className="stat">
-      <p>أعلى نتيجة</p>
-      <span>320</span>
-    </div>
-    <div className="stat">
-      <p>مجموع الألعاب</p>
-      <span>17</span>
-    </div>
-  </div>
-</div>
+        {/* آخر الألعاب */}
+        <div className="card last-games-card">
+          <h3>أخر الألعاب</h3>
+          {lastGames.length === 0 && <p>لم يتم لعب أي لعبة بعد</p>}
 
-  
+          {lastGames.map((game, index) => (
+            <div className="game-item" key={index}>
+              <p className="winner-name">
+                🏆 الفائز: {game.winner} ({game.winnerScore})
+              </p>
+              <ul className="player-scores">
+                {game.players.map((p, i) => (
+                  <li key={i}>{p.name}: {p.score}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
 
-  <div className="card last-games-card">
-  <h3>أخر الألعاب</h3>
+        {/* كارد أفضل اللاعبين */}
+        <div className="card">
+          <h3>أفضل اللعبين</h3>
+          <p>هذا محتوى الكارد الثالث</p>
+        </div>
+      </div>
 
-  <div className="game-item">
-    <img
-      src="https://via.placeholder.com/80"
-      alt="لعبة"
-      className="game-image"
-    />
-    
-    <div className="game-info">
-      <p className="winner-name">الفائز: أحمد</p>
-      <ul className="player-scores">
-        <li>محمد: 50</li>
-        <li>سارة: 40</li>
-        <li>علي: 30</li>
+
+      <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h1>الشِّدّة</h1>
+      <h3>منصة لدعمك في فترات الشدّة وتقديم محتوى يخفف عليك ويقوّيك.</h3>
+    </div>
+
+    <div class="footer-col">
+      <h4>روابط سريعة</h4>
+      <ul>
+        <li><a href="#"> <h2 >الرئيسية</h2>  </a></li>
+        <li><a href="#"><h2>من نحن </h2> </a></li>
+        <li><a href="#"><h2>المدونة</h2></a></li>
+        <li><a href="#"> <h2>تواصل معنا </h2></a></li>
+        <li><a href="#"> <h2>الاسئلة الشائعة</h2></a></li>
       </ul>
     </div>
-  </div>
 
-</div>
-
-
-  <div className="card">
-    <h3>أفضل اللعبين</h3>
-    <p>هذا محتوى الكارد الثالث</p>
-  </div>
-</div>
+    <div class="footer-col">
+      <h2>تواصل معنا</h2>
+     <h2> <p>📧 info@devexa-it.com</p></h2>
+      <h2><p>📱 962770245471</p></h2>
     </div>
-  )
+  </div>
+
+  <div class="footer-bottom">
+<h2>© 2026 جميع الحقوق محفوظة – منصة الشِّدّة</h2>  </div>
+</footer>
+    </div>
+  );
 }
 
-export default Main
+export default Main;

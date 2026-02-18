@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from "react";
 
-export default function GameHend() {
+export default function GameTarneeb() {
   const [name, setName] = useState("");
   const [players, setPlayers] = useState([]);
   const [winner, setWinner] = useState(null);
 
+  const targetScore = 500; // مجموع النقاط المطلوب للفوز
+
   // استرجاع البيانات من localStorage عند فتح الصفحة
   useEffect(() => {
-    const savedPlayers = JSON.parse(localStorage.getItem("hendPlayers"));
+    const savedPlayers = JSON.parse(localStorage.getItem("tarneebPlayers"));
     if (Array.isArray(savedPlayers)) {
       setPlayers(savedPlayers);
       calculateWinner(savedPlayers);
     }
   }, []);
 
-  // حفظ اللاعبين تلقائيًا عند أي تعديل
+  // حفظ اللاعبين تلقائيًا عند أي تعديل وحساب الفائز
   useEffect(() => {
-    localStorage.setItem("hendPlayers", JSON.stringify(players));
+    localStorage.setItem("tarneebPlayers", JSON.stringify(players));
     calculateWinner(players);
   }, [players]);
 
@@ -34,68 +36,53 @@ export default function GameHend() {
   };
 
   // حذف لاعب
-  const handleDelete = (id) => setPlayers(players.filter(p => p.id !== id));
+  const handleDelete = (id) => {
+    setPlayers(players.filter((player) => player.id !== id));
+  };
 
   // إعادة تعيين اللعبة
   const handleReset = () => {
     setPlayers([]);
     setWinner(null);
-    localStorage.removeItem("hendPlayers");
+    localStorage.removeItem("tarneebPlayers");
   };
 
   // إضافة نتيجة جديدة
   const handleAddScore = (id, scoreValue) => {
     const value = parseInt(scoreValue);
     if (isNaN(value)) return;
-    const updatedPlayers = players.map(player =>
-      player.id === id ? { ...player, scores: [...player.scores, value] } : player
+
+    const updatedPlayers = players.map((player) =>
+      player.id === id
+        ? { ...player, scores: [...player.scores, value] }
+        : player
     );
+
     setPlayers(updatedPlayers);
+    localStorage.setItem("tarneebPlayers", JSON.stringify(updatedPlayers));
   };
 
-  // حساب مجموع كل لاعب
+  // حساب مجموع اللاعب
   const calculateSum = (player) => player.scores.reduce((total, s) => total + s, 0);
 
-  // حفظ اللعبة الأخيرة في localStorage
-  const saveLastGame = (winnerObj, playersList) => {
-    const lastGames = JSON.parse(localStorage.getItem("lastGames")) || [];
-    const newGame = {
-      winner: winnerObj.name,
-      winnerScore: winnerObj.sum,
-      players: playersList
-        .filter(p => p.name !== winnerObj.name)
-        .map(p => ({ name: p.name, score: calculateSum(p) }))
-    };
-    lastGames.unshift(newGame);
-    if (lastGames.length > 5) lastGames.pop(); // آخر 5 ألعاب فقط
-    localStorage.setItem("lastGames", JSON.stringify(lastGames));
-  };
-
-  // حساب الفائز (أصغر مجموع سالب)
+  // حساب الفائز: أول لاعب يصل أو يتجاوز targetScore
   const calculateWinner = (playersList) => {
-    if (!playersList || playersList.length === 0) return;
-    const negativeSums = playersList
-      .map(p => ({ ...p, sum: calculateSum(p) }))
-      .filter(p => p.sum < 0);
+    const winnerPlayer = playersList.find(p => calculateSum(p) >= targetScore);
 
-    if (negativeSums.length === 0) {
+    if (winnerPlayer) {
+      setWinner({ name: winnerPlayer.name, sum: calculateSum(winnerPlayer) });
+    } else {
       setWinner(null);
-      return;
     }
-
-    let topPlayer = negativeSums[0];
-    negativeSums.forEach(p => { if (p.sum < topPlayer.sum) topPlayer = p; });
-
-    const winnerObj = { name: topPlayer.name, sum: topPlayer.sum };
-    setWinner(winnerObj);
-    saveLastGame(winnerObj, playersList);
   };
 
   return (
     <div className="game-container">
       <div className="game-card">
-        <h2>تسجيل نتيجة لعبة هند</h2>
+        <h2>تسجيل نتائج لعبة الطرنيب</h2>
+        <p>الفائز هو أول لاعب يصل {targetScore} نقطة</p>
 
+        {/* إضافة لاعب جديد */}
         <form onSubmit={handleAdd} className="add-player-form">
           <input
             type="text"
@@ -112,7 +99,7 @@ export default function GameHend() {
               <tr>
                 <th>#</th>
                 <th>الاسم</th>
-                <th>النتائج</th>
+                <th>النقاط</th>
                 <th>المجموع</th>
                 <th>إجراءات</th>
               </tr>
@@ -126,18 +113,16 @@ export default function GameHend() {
                     {player.scores.map((s, i) => (
                       <span key={i} className="score-badge">{s}</span>
                     ))}
-                    {player.scores.length < 6 && (
-                      <input
-                        type="number"
-                        placeholder="+ النتيجة"
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter") {
-                            handleAddScore(player.id, e.target.value);
-                            e.target.value = "";
-                          }
-                        }}
-                      />
-                    )}
+                    <input
+                      type="number"
+                      placeholder="+ النقاط"
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          handleAddScore(player.id, e.target.value);
+                          e.target.value = "";
+                        }
+                      }}
+                    />
                   </td>
                   <td>{calculateSum(player)}</td>
                   <td>
@@ -152,12 +137,13 @@ export default function GameHend() {
         <button onClick={() => window.location.href='/button'}>العودة</button>
         <button className="btn reset-btn" onClick={handleReset}>إعادة تعيين</button>
 
+        {/* عرض الفائز */}
         {winner ? (
           <div className="winner">
-            🏆 الفائز: {winner.name} (أصغر مجموع سالب: {winner.sum})
+            🏆 الفائز: {winner.name} (المجموع: {winner.sum})
           </div>
         ) : (
-          <div className="winner">لم يتم تحديد فائز بعد أو لا يوجد مجموع سالب</div>
+          <div className="winner">اللعبة مستمرة، لم يصل أحد للـ {targetScore} بعد</div>
         )}
       </div>
     </div>

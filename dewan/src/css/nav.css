@@ -96,4 +96,24 @@
       display: none; /* نخفي الزر إذا الشاشة صغيرة */
     }
   }
-  
+  /* زر تسجيل الخروج */
+.user-logout button {
+  background-color: #e63946;   /* لون أحمر لطيف */
+  color: white;                /* نص أبيض */
+  border: none;                /* إزالة حدود افتراضية */
+  padding: 8px 16px;           /* مساحة داخلية جيدة */
+  border-radius: 8px;          /* حواف دائرية */
+  font-weight: bold;           /* خط غامق */
+  cursor: pointer;             /* مؤشر اليد عند المرور */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* حركة سلسة */
+  margin-right: 50px;
+}
+
+.user-logout button:hover {
+  background-color: #d62828;  /* يصبح أغمق عند المرور */
+  transform: scale(1.05);     /* يكبر قليلًا */
+}
+
+.user-logout button:active {
+  transform: scale(0.95);     /* تأثير ضغط عند النقر */
+}

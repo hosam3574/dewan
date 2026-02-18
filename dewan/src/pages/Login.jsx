@@ -10,18 +10,24 @@ function Login({ setUser }) {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const { data } = await axios.post("http://localhost:4000/api/auth/login", { email, password });
-      
-      // حفظ حالة المستخدم
-      setUser(data);
-      localStorage.setItem("token", data.token);
-      navigate("/"); // يروح للصفحة الرئيسية بعد تسجيل الدخول
-    } catch (err) {
-      setMessage(err.response?.data?.message || "حدث خطأ");
-    }
-  };
+  e.preventDefault();
+  try {
+    const { data } = await axios.post("http://localhost:4000/api/auth/login", { email, password });
+
+    // حفظ التوكن والاسم مع بعض
+    const userData = { name: data.name, token: data.token };
+    localStorage.setItem("user", JSON.stringify(userData));
+
+    // تحديث حالة React
+    setUser(userData);
+
+    navigate("/");
+  } catch (err) {
+    setMessage(err.response?.data?.message || "حدث خطأ");
+  }
+};
+
+  
 
   return (
     <div className="auth-container">
