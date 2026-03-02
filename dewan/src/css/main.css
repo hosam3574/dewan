@@ -5,6 +5,7 @@ body, html {
     height: 100%;
     width: 100%;
     background: linear-gradient(to right, rgb(0, 59, 0), rgb(4, 96, 4), rgb(0, 59, 0));
+    margin-top: 165px;
   }
   
   /* الحاوية العامة */

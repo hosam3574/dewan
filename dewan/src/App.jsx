@@ -7,6 +7,7 @@ import "./css/GameHend.css"
 import "./css/footer.css"
 
 import Navebar from './componants/navebar'
+import Footer from './componants/footer'
 import Main from './componants/main'
 import Group from './componants/Group'
 import GameHend from './componants/GameHend'
@@ -20,18 +21,15 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import { useState, useEffect } from 'react';
 
 function App() {
-
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   // 🔑 يفحص إذا في token أول ما يفتح الموقع
- useEffect(() => {
-  const storedUser = localStorage.getItem("user");
-  if (storedUser) {
-    setUser(JSON.parse(storedUser)); // الاسم + التوكن
-  }
-  setLoading(false);
-}, []);
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) setUser(JSON.parse(storedUser));
+    setLoading(false);
+  }, []);
 
   // 🔑 دالة تسجيل الخروج
   const logout = () => {
@@ -39,53 +37,35 @@ function App() {
     setUser(null);
   };
 
-  if (loading) return null; // منع اللخبطة أثناء الفحص
+  if (loading) return null;
 
   return (
     <Router>
+      <div className="app-wrapper">
 
-      {/* Navbar يظهر فقط إذا المستخدم مسجل دخول */}
-      {user && <Navebar user={user} logout={logout} />}
+        {/* Navbar يظهر فقط إذا المستخدم مسجل دخول */}
+        {user && <Navebar user={user} logout={logout} />}
 
-      <Routes>
+        {/* المحتوى الرئيسي */}
+        <div className="main-content">
+          <Routes>
+            <Route path="/start" element={<Navigate to={user ? "/" : "/login"} />} />
+            <Route path="/" element={user ? <Main user={user} /> : <Navigate to="/login" />} />
+            <Route path="/button" element={<Group />} />
+            <Route path="/game-hend" element={<GameHend />} />
+            <Route path="/game-bnakl" element={<GameBnakl />} />
+            <Route path="/game-tarneeb" element={<GameTarneeb />} />
+            <Route path="/game-trix-advanced" element={<GameTrixAdvanced />} />
+            <Route path="/login" element={user ? <Navigate to="/" /> : <Login setUser={setUser} />} />
+            <Route path="/register" element={user ? <Navigate to="/" /> : <Register setUser={setUser} />} />
+            <Route path="*" element={<Navigate to="/start" />} />
+          </Routes>
+        </div>
 
-        {/* توجيه تلقائي عند فتح الموقع */}
-        <Route 
-          path="/start" 
-          element={<Navigate to={user ? "/" : "/login"} />} 
-        />
+        {/* Footer يظهر أسفل الصفحة دائما */}
+        <Footer />
 
-        {/* الصفحة الرئيسية محمية */}
-        <Route 
-          path="/" 
-          element={user ? <Main user={user} /> : <Navigate to="/login" />} 
-        />
-
-        {/* باقي الصفحات بدون حماية */}
-        <Route path="/button" element={<Group />} />
-        <Route path="/game-hend" element={<GameHend />} />
-        <Route path="/game-bnakl" element={<GameBnakl />} />
-        <Route path="/game-tarneeb" element={<GameTarneeb />} />
-        <Route path="/game-trix-advanced" element={<GameTrixAdvanced  />} />
-        {/* تسجيل الدخول */}
-        <Route 
-          path="/login" 
-          element={user ? <Navigate to="/" /> : <Login setUser={setUser} />} 
-        />
-
-        {/* تسجيل حساب */}
-        <Route 
-          path="/register" 
-          element={user ? <Navigate to="/" /> : <Register setUser={setUser} />} 
-        />
-
-        {/* أي رابط خاطئ يرجع للبداية */}
-        <Route 
-          path="*" 
-          element={<Navigate to="/start" />} 
-        />
-
-      </Routes>
+      </div>
     </Router>
   )
 }

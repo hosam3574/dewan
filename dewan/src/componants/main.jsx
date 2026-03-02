@@ -84,37 +84,11 @@ function Main({ user }) {
           <h3>أفضل اللعبين</h3>
           <p>هذا محتوى الكارد الثالث</p>
         </div>
+
       </div>
 
-
-      <footer class="footer">
-  <div class="footer-container">
-    <div class="footer-col">
-      <h1>الشِّدّة</h1>
-      <h3>منصة لدعمك في فترات الشدّة وتقديم محتوى يخفف عليك ويقوّيك.</h3>
-    </div>
-
-    <div class="footer-col">
-      <h4>روابط سريعة</h4>
-      <ul>
-        <li><a href="#"> <h2 >الرئيسية</h2>  </a></li>
-        <li><a href="#"><h2>من نحن </h2> </a></li>
-        <li><a href="#"><h2>المدونة</h2></a></li>
-        <li><a href="#"> <h2>تواصل معنا </h2></a></li>
-        <li><a href="#"> <h2>الاسئلة الشائعة</h2></a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h2>تواصل معنا</h2>
-     <h2> <p>📧 info@devexa-it.com</p></h2>
-      <h2><p>📱 962770245471</p></h2>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-<h2>© 2026 جميع الحقوق محفوظة – منصة الشِّدّة</h2>  </div>
-</footer>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+   
     </div>
   );
 }

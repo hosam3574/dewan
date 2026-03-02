@@ -1,103 +1,47 @@
-import React from "react";
-import { View, Text, StyleSheet, Linking, TouchableOpacity, ScrollView } from "react-native";
+// Footer.jsx
+import React, { useState, useEffect } from "react";
+
 
 export default function Footer() {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // إذا وصلت لنهاية الصفحة
+      const bottom = window.innerHeight + window.scrollY >= document.body.offsetHeight -2;
+      setShow(bottom);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <View style={styles.footerWrapper}>
-      <ScrollView contentContainerStyle={styles.footerContent}>
-        {/* العمود الأول */}
-        <View style={styles.footerCol}>
-          <Text style={styles.footerTitle}>الشِّدّة</Text>
-          <Text style={styles.footerText}>
-            منصة لدعمك في فترات الشدّة وتقديم محتوى يخفف عليك ويقوّيك.
-          </Text>
-        </View>
-
-        {/* العمود الثاني */}
-        <View style={styles.footerCol}>
-          <Text style={styles.footerSubtitle}>روابط سريعة</Text>
-          <TouchableOpacity onPress={() => Linking.openURL("#")}>
-            <Text style={styles.footerLink}>الرئيسية</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => Linking.openURL("#")}>
-            <Text style={styles.footerLink}>من نحن</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => Linking.openURL("#")}>
-            <Text style={styles.footerLink}>المدونة</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => Linking.openURL("#")}>
-            <Text style={styles.footerLink}>تواصل معنا</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => Linking.openURL("#")}>
-            <Text style={styles.footerLink}>الأسئلة الشائعة</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* العمود الثالث */}
-        <View style={styles.footerCol}>
-          <Text style={styles.footerSubtitle}>تواصل معنا</Text>
-          <Text style={styles.footerText}>📧 info@devexa-it.com</Text>
-          <Text style={styles.footerText}>📱 962770245471</Text>
-        </View>
-      </ScrollView>
-
-      <View style={styles.footerBottom}>
-        <Text style={styles.footerBottomText}>
-          © 2026 جميع الحقوق محفوظة – منصة الشِّدّة
-        </Text>
-      </View>
-    </View>
+    <footer className={`footer ${show ? "visible" : ""}`}>
+      <div className="footer-container">
+        <div className="footer-col">
+          <h1>الشِّدّة</h1>
+          <h3>منصة لدعمك في فترات الشدّة وتقديم محتوى يخفف عليك ويقوّيك.</h3>
+        </div>
+        <div className="footer-col">
+          <h4>روابط سريعة</h4>
+          <ul>
+            <li><a href="#">الرئيسية</a></li>
+            <li><a href="#">من نحن</a></li>
+            <li><a href="#">المدونة</a></li>
+            <li><a href="#">تواصل معنا</a></li>
+            <li><a href="#">الأسئلة الشائعة</a></li>
+          </ul>
+        </div>
+        <div className="footer-col">
+          <h4>تواصل معنا</h4>
+          <p>📧 info@devexa-it.com</p>
+          <p>📱 962770245471</p>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        © 2026 جميع الحقوق محفوظة – منصة الشِّدّة
+      </div>
+    </footer>
   );
 }
-
-const styles = StyleSheet.create({
-  footerWrapper: {
-    backgroundColor: "#0f172a",
-    width: "100%",
-    paddingVertical: 30,
-    paddingHorizontal: 20,
-    flexShrink: 0,
-  },
-  footerContent: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
-  },
-  footerCol: {
-    width: "30%",
-    marginBottom: 20,
-  },
-  footerTitle: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#fff",
-    marginBottom: 10,
-  },
-  footerSubtitle: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#fff",
-    marginBottom: 8,
-  },
-  footerText: {
-    fontSize: 14,
-    color: "#cbd5f5",
-    marginBottom: 5,
-  },
-  footerLink: {
-    fontSize: 14,
-    color: "#38bdf8",
-    marginBottom: 5,
-  },
-  footerBottom: {
-    borderTopWidth: 1,
-    borderTopColor: "#333",
-    marginTop: 20,
-    paddingTop: 10,
-  },
-  footerBottomText: {
-    color: "#94a3b8",
-    fontSize: 12,
-    textAlign: "center",
-  },
-});

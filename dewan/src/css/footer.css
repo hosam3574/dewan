@@ -1,15 +1,18 @@
 .footer {
-  
+  width: 100%;
+  background-color: #07890539;
   color: #e7ebe5;
-  padding: 60px 20px 20px;
-  font-family: sans-serif;
+ 
+ 
+  box-sizing: border-box; /* مهم ليأخذ العرض بالكامل */
+  margin-top: 390px;
 }
 
 .footer-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 0px;
-  max-width: 1500px;
+  gap: 50px;
+  max-width: 1500px;  /* المحتوى يظل محدود لكن الخلفية ممتدة */
   margin: auto;
 }
 
@@ -25,7 +28,7 @@
 }
 
 .footer a:hover {
-  color: #38bdf8;
+  color: #fff;
 }
 
 .footer ul {
@@ -40,7 +43,7 @@
 
 .footer-bottom {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 30px;
   font-size: 13px;
   color: #94a3b8;
 }
